@@ -36,6 +36,28 @@ function createUiElement(node) {
 function triggerClick(element) {
 
   var categoryId = element.getAttribute("data-id");
+  var newCategoryTitle;
+
+  if (categoryId == "NEW") {
+
+    newCategoryTitle = element.getAttribute("data-title");
+
+    chrome.bookmarks.create({
+      title: newCategoryTitle
+    }, function(res) {
+      processBookmark(res.id);
+    })
+
+  } else {
+
+    processBookmark(categoryId);
+
+  }
+
+}
+
+function processBookmark(categoryId) {
+
   getCurrentUrlData(function(url, title) {
 
     if (title && categoryId && url) {
@@ -49,9 +71,12 @@ function triggerClick(element) {
 
 function addBookmarkToCategory(categoryId, title, url) {
 
-  chrome.bookmarks.create({'parentId': categoryId,
-                           'title': title,
-                           'url': url});
+  chrome.bookmarks.create({
+    'parentId': categoryId,
+    'title': title,
+    'url': url
+  });
+
 }
 
 function getCurrentUrlData(callbackFn) {
@@ -89,6 +114,21 @@ function focusItem(index) {
   focusedElement = wrapper.childNodes[index];
   focusedElement.classList.add("focus");
 
+  focusedElement.scrollIntoView(false);
+
+}
+
+function addCreateCategoryButton(categoryName) {
+
+  var el = document.createElement("span");
+  el.setAttribute("data-id", "NEW");
+  el.setAttribute("data-title", categoryName);
+  el.classList.add("create");
+  el.innerHTML = chrome.i18n.getMessage("new") + ": " + categoryName;
+
+  wrapper.appendChild(el);
+  currentNodeCount = currentNodeCount + 1;
+
 }
 
 function createInitialTree() {
@@ -109,6 +149,9 @@ function createInitialTree() {
     })
 
     createUiFromNodes( categoryNodes );
+
+    wrapper.style.width = wrapper.clientWidth + "px";
+
     if (currentNodeCount > 0) focusItem(0);
 
     fuzzySearch = new Fuse(categoryNodes, options);
@@ -156,10 +199,17 @@ function createInitialTree() {
           resetUi(); 
           createUiFromNodes(newNodes) 
           if (newNodes.length) focusItem(0);
+
+          if (!newNodes.length || text !== newNodes[0].title) {
+            addCreateCategoryButton(text);
+          }
+
         } else {
           resetUi();
           createUiFromNodes(categoryNodes);
+          if (currentNodeCount > 0) focusItem(0);
         }
+        index = 0;
       }, 0);
     }
 

@@ -1,3 +1,5 @@
+// placeholder - will be used when options are implemented
+
 chrome.runtime.onStartup.addListener(function() {
   registerEvents();
 });

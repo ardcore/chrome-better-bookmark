@@ -1,14 +1,21 @@
 {
   "manifest_version": 2,
 
-  "name": "Better Bookmark Button",
-  "description": "Button and popup to quickly add bookmarks to any category.",
-  "version": "1.2",
+  "name": "Better Bookmark",
+  "description": "Easily add bookmarks to any category. Includes spotlight-like search with mouse/keyboard support. Default key: cmd+b (win:ctrl+b)",
+  "version": "1.3",
   "author": "Szymon Pilkowski",
-  "homepage_url": "http:/twitter.com/ard",
+  "homepage_url": "https://github.com/ardcore/chrome-better-bookmark",
+  "default_locale": "en",
 
   "background": {
     "page": "init.html"
+  },
+
+  "icons": { 
+    "16": "bookmark.png",
+    "48": "bookmark.png",
+    "128": "bookmark.png" 
   },
 
   "browser_action": {
@@ -18,6 +25,18 @@
     },
     "default_title": "Better Bookmark Button",
     "default_popup": "background.html"
+  },
+  "commands": {
+    "_execute_browser_action": {
+
+      "suggested_key": {
+        "default": "Ctrl+B",
+        "windows": "Ctrl+B",
+        "mac": "Command+B",
+        "chromeos": "Ctrl+B",
+        "linux": "Ctrl+B"
+      }
+    }
   },
 
   "permissions": [
