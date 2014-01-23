@@ -81,7 +81,7 @@ function addBookmarkToCategory(categoryId, title, url) {
 
 function getCurrentUrlData(callbackFn) {
 
-  chrome.tabs.query({'active': true}, function (tabs) {
+  chrome.tabs.query({'active': true, 'currentWindow': true}, function (tabs) {
     callbackFn(tabs[0].url, tabs[0].title)
   });
 
