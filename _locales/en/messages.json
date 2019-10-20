@@ -1,6 +1,30 @@
 {
   "new": {
-    "message": "new",
-    "description": "New category caption."
+    "message": "Look for a folder by entering its <b>name</b> above first.<br />Nothing found? Type in the desired <b>name</b> and click on it below to create a new folder.",
+    "description": "New category text"
+  },
+  "chooseparent": {
+    "message": "You can also link <b>your new folder</b> to a parent one by clicking on any radio button down below",
+    "description": "Choose parent category text"
+  },
+  "iconup": {
+    "message": "&uparrow; Look above",
+    "description": "Parent category icon up"
+  },
+  "icondown": {
+    "message": "Look below &downarrow;",
+    "description": "Parent category icon down"
+  },
+  "caption": {
+    "message": "You are adding this folder to a chosen parent directory shown the breadcrumb below",
+    "description": "Caption to show on mouse over"
+  },
+  "anotherparentdir": {
+    "message": "You can now as well click on any listed sub folder to save your bookmark or make it a parent folder",
+    "description": "Chosen parent directory"
+  },
+  "checkbox": {
+    "message": "Show/hide children",
+    "description": "Show children toogler text"
   }
 }
