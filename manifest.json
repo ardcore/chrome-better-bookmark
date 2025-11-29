@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
 
   "name": "Better Bookmark",
   "description": "Easily add bookmarks to any category. Includes spotlight-like search with mouse/keyboard support. Default key: cmd+b (win:ctrl+b)",
@@ -9,7 +9,7 @@
   "default_locale": "en",
 
   "background": {
-    "page": "init.html"
+    "service_worker": "init.js"
   },
 
   "icons": { 
@@ -18,7 +18,7 @@
     "128": "bookmark.png" 
   },
 
-  "browser_action": {
+  "action": {
     "default_icon": {
       "19": "bookmark.png",
       "38": "bookmark.png"
@@ -27,7 +27,7 @@
     "default_popup": "background.html"
   },
   "commands": {
-    "_execute_browser_action": {
+    "_execute_action": {
 
       "suggested_key": {
         "default": "Ctrl+B",

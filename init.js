@@ -1,7 +1,9 @@
 // placeholder - will be used when options are implemented
 
+registerEvents();
+
 chrome.runtime.onStartup.addListener(function() {
-  registerEvents();
+  // Optional: any startup logic if needed, but listeners are already registered
 });
 
 
